@@ -16,7 +16,7 @@ class PingTest {
         server.ping();
         HttpResponse<String> resp = null;
         HttpRequest requestGet = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8795/ping"))
+            .uri(URI.create("http://localhost:9876/ping"))
             .setHeader("Accept", "application/json")
             .build();
         resp =   HttpClient.newHttpClient().send(requestGet, HttpResponse.BodyHandlers.ofString());
