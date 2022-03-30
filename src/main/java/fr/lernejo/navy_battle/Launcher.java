@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Launcher {
     public static void main(String[] args) throws IOException, InterruptedException {
         if (args.length < 1) {return;}
-        Server server = new Server(Integer.parseInt(args[0]));
+        Server server = new Server(Integer.parseInt(args[0]), "localhost");
         server.ping();
         server.start();
         if (args.length == 2) {

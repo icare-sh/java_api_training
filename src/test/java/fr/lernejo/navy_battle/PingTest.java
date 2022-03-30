@@ -12,7 +12,7 @@ import java.net.http.HttpResponse;
 class PingTest {
     @Test
     public void testPingRequestOnServerShouldReturn200() throws IOException, InterruptedException {
-        Server server = new Server(9876);
+        Server server = new Server(9876, "localhost");
         server.ping();
         HttpResponse<String> resp = null;
         HttpRequest requestGet = HttpRequest.newBuilder()
