@@ -1,0 +1,13 @@
+{
+    "consequence": {
+        "type": "string",
+        "enum": [
+            "miss",
+            "hit",
+            "sunk"
+        ]
+    },
+    "shipLeft": {
+        "type": "boolean"
+    }
+}

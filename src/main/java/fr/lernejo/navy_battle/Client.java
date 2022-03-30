@@ -7,19 +7,22 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Client {
+    public final HttpClient client;
     final int port;
-    public Client(int port) {
+    final String servUrl;
+
+    public Client(int port, String url) {
+        this.client = HttpClient.newHttpClient();
         this.port = port;
+        this.servUrl = url;
     }
-    public HttpResponse postRequest(int port, String adversaryUrl) throws IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
+
+    public void startGame() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(adversaryUrl + "/api/game/start"))
+            .uri(URI.create(this.servUrl + "/api/game/start"))
             .setHeader("Accept", "application/json")
             .setHeader("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + port + "\", \"message\":\"hello\"}"))
+            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}"))
             .build();
-        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        return response;
     }
 }
