@@ -5,7 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
+public class PingHandler implements com.sun.net.httpserver.HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String st = "OK";
         exchange.sendResponseHeaders(200, st.length());
